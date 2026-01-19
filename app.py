@@ -1,21 +1,13 @@
 import streamlit as st
-import google.generativeai as genai
+import random
 
-# ‰æ–Ê‚Ìƒ^ƒCƒgƒ‹
-st.title("Gemini WebƒAƒvƒŠ")
+st.title("ç°¡å˜ãŠã¿ãã˜ã‚¢ãƒ—ãƒª")
+st.write("ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ã¦ä»Šæ—¥ã®é‹å‹¢ã‚’å ãŠã†ï¼")
 
-# APIƒL[‚ğˆÀ‘S‚Éæ“¾iŒöŠJİ’è‚És‚¢‚Ü‚·j
-if "GEMINI_API_KEY" in st.secrets:
-    genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
-else:
-    st.error("APIƒL[‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB")
-
-# “ü—ÍƒtƒH[ƒ€
-user_input = st.text_input("AI‚É•·‚«‚½‚¢‚±‚Æ‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢")
-
-if st.button("‘—M"):
-    if user_input:
-        model = genai.GenerativeModel("gemini-1.5-flash")
-        response = model.generate_content(user_input)
-        st.write("### AI‚Ì‰ñ“š:")
-        st.success(response.text)
+if st.button("ãŠã¿ãã˜ã‚’å¼•ã"):
+    results = ["å¤§å‰ ğŸŒŸ", "ä¸­å‰ âœ¨", "å°å‰ ğŸ€", "å‰ â˜€ï¸", "æœ«å‰ ğŸƒ", "å‡¶ â˜ï¸"]
+    luck = random.choice(results)
+    st.header(f"çµæœã¯... {luck}")
+    
+    if "å¤§å‰" in luck:
+        st.balloons() # å¤§å‰ã®æ™‚ã ã‘é¢¨èˆ¹ã‚’é£›ã°ã™æ¼”å‡º
